@@ -1,0 +1,191 @@
+*{ 
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    background-color:#c7c8cc;
+}
+.header{
+    width: 100%;
+    height: 8vh;
+    background-color: gray;
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.header nav ul{
+    display: flex;
+    margin-right: 250px;
+}
+.header nav ul li{
+    list-style: none;
+}
+.header nav ul li a{
+    text-decoration: none;
+    margin-left: 100px;
+    color:black;
+    text-shadow: 1px 1px 1px gray;
+    padding: 3px;
+    border: 2px solid gray;
+    cursor: pointer;
+    user-select: none;
+}
+
+.header nav ul li a:hover{
+    border-bottom: 2px solid rgb(111, 189, 241);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+
+.img-container{
+    display: flex;
+    justify-content:space-around;
+    margin-top:6vh;
+    margin-bottom: 3vh;
+}
+.img-box1,.img-box2{
+    width:30vw;
+    height:50vh;
+    background-color: rgb(255, 255, 255 ,.6);
+    border: 1px solid black;
+    border-radius:.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-box1,.img-box2{
+    width: 25vw;
+    height: 40vh;
+}
+#imgtag{
+    width: 98%;
+    height: 98%;
+    object-fit:contain;
+    background-color:white;
+    border-radius:1%;
+    padding: 1%;
+    border:1px solid rgb(5, 5, 5,.5);
+}
+#textarea1{
+    width: 98%;
+    height: 98%;
+    border-radius: 1%;
+    padding: 2%;
+    font-size:130%;
+    outline: none;
+    border:1px solid rgb(5, 5, 5,.5);
+}
+
+.form-section form{
+    width: 40vw;
+    height:100%;
+}
+
+.form-section{
+    margin-top: 2vh;
+    display: flex;
+    position: relative;   
+}
+
+button{
+    height:30px;
+    width: 80px;
+    background-color:gray;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-clear{
+    position: absolute;
+    left: 13vw;
+}
+.file-select-btn{
+    font-size: 11px;
+    position: absolute;
+    left: 31vw;
+
+}
+.btn-extract{
+    position: absolute;
+    right: 31vw;
+
+}
+
+
+.btn-copy{
+    position: absolute;
+    right: 13vw;
+}
+
+
+.btn-clear:hover{
+    background-color: red;
+    color: white ;
+    width: 85px;
+    height: 33px;
+    transition: .3s;
+}
+.file-select-btn:hover{   
+    background-color: rgb(26, 85, 211);
+    color: white;
+    width: 85px;
+    height: 33px;
+    font-size: 13px;
+    transition: .3s;
+}
+.btn-extract:hover{
+    background-color: rgb(26, 85, 211);
+    color: white ;
+    width: 85px;
+    height: 33px;
+    transition: .3s;
+}
+.btn-copy:hover{   
+    background-color: green;
+    color: white ;
+    width: 85px;
+    height: 33px;
+    transition: .3s;
+}
+
+
+
+
+.log-container summary{
+    margin-top:2vw;
+    margin-bottom: 2vh;
+    margin-left:5vw;
+    cursor: pointer;
+}
+.log-btn{
+    margin-left: 50px;
+    margin-top: 50px;
+    color:black;
+    cursor: pointer;
+    text-shadow: .5px .5px 1px rgb(8, 8, 8,0.2);
+}
+.log-box{
+    width: 75vw;
+    height: 25vh;
+    color: rgb(46, 45, 45);
+    background-color:white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left:5vw;
+    font-size: 120%;
+    padding:1rem 1rem 0 .5rem;
+    line-height:180%;
+    outline: none;
+
+    position: absolute;
+    left: 8vw;
+}
+.f_size{
+    font-size:200px;
+    background-color: blue;
+    
+} 

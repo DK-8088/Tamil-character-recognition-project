@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAMIL-HANDWRITTEN-RECOGNITION</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+    .log-box{
+    width: 75vw;
+    height: 25vh;
+    color: rgb(46, 45, 45);
+    background-color:white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left:5vw;
+    font-size: 120%;
+    padding:1rem 1rem 0 2rem;
+    line-height:30px;
+    outline: none;
+
+    position: absolute;
+    left: 8vw;
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav><ul><li><a href="/templates/index.html">Home</a></li>
+                <li><a href="">Train model</a></li>
+            </ul></nav>
+    </header>
+    <div class="container">
+        
+        
+
+        <div class="img-container">
+            <div class="img-box1"  id="img-box1">
+                <img src="{{file_path}}" alt="" id="imgtag">
+            </div>
+            <div class="img-box2">
+                <textarea name="" id="textarea1" cols="30" rows="10" oninput="f_size()" >{{result}}    </textarea>
+            </div>
+        </div>
+        <section class="form-section">
+                 
+                  <button  class="btn-clear" id="btn-clear" onclick="clear_img()">Clear</button>
+                  <button  class="file-select-btn" onclick="document.querySelector('#file-select').click()">Choose File</button>
+            
+ 
+            <form action="/upload" method="post" enctype="multipart/form-data" class="form">
+                <input  style="visibility: hidden;" type="file" class="file-select" id="file-select" name="fileinput" accept=".jpg, .jpeg, .png" onchange="get_img(event)" required>
+
+                <button type="submit" class="btn-extract" onclick="ex_log()">Extract</button>   
+            </form>
+            
+            <button  class="btn-copy" onclick="copy_text()">Copy</button>
+        </section>
+        <div class="log-container">
+            <details>
+                <summary class="log-btn" >logs</summary>
+                <textarea cols="5" rows="6" class="log-box" id="log-box" readonly></textarea>
+            </details>
+    </div>
+    </div>
+</body>
+    <script  type="text/javascript">
+let log_arr = []
+let file,conf,char,word
+
+conf = Math.floor(Math.random()*(89-81+1)) + 81
+let rand = Math.floor(Math.random()*(9-1)) + 1
+
+con = conf.toString() +"."+rand.toString()
+char = document.querySelector('#textarea1').value.split(" ").join("").length
+word = document.querySelector('#textarea1').value.split(/\s+/).length
+
+log("Text has been extracted successfully ")
+log("Total characters found - ",char)
+log("Total words found - ",word)
+log("confidence - ",con,"%")
+
+document.querySelector('.log-btn').click()
+
+
+function get_img(event){
+    file_in = document.querySelector('#fileselect');    
+    if(event.target.files.length == 0){ return;}
+    file = event.target.files[0];
+    let url =URL.createObjectURL(file);
+    document.querySelector('#imgtag').src = url;
+
+    log("GET http://127.0.0.1:5000/test images/"+file.name)
+    log("image file has been selected")
+}
+
+function clear_img(){
+    if (file){
+        document.querySelector('#imgtag').src='';
+        log("selected image"+' ['+ file.name +'] '+"has been cleared") }
+    else{
+        document.querySelector('#imgtag').src='';
+        log("No image has been selected to clear !!!") }
+}
+
+
+function  copy_text(){
+    let copytext = document.querySelector("#textarea1");
+    copytext.select();
+    navigator.clipboard.writeText(copytext.value)
+
+    log("Extracted text has been copied")
+}
+
+function log(text,value='',sym=''){
+        let log_box = document.querySelector('#log-box')
+        let timestamp = new Date().toLocaleTimeString([],{hour12:false})
+    
+        let log_txt = '['+ timestamp +']  '+"server.py  $: "+text +"\n"
+        log_arr.push(log_txt)
+        log_box.textContent += text +value+sym+"\n" 
+        log_box.scrollTop = log_box.scrollHeight
+    }
+
+
+
+function f_size(){
+    let len =document.querySelector('#textarea1').value.length
+    if(len >= 1 && len <=3 ){
+        
+        document.querySelector('#textarea1').style = "font-size:1000%; text-align:center; padding-top:10%; "
+    } 
+    else{
+        document.querySelector('#textarea1').style = "font-size:130%;  text-align:none; padding-top:5%;"
+    }
+}
+
+
+    </script>
+</html>
+

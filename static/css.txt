@@ -1,0 +1,131 @@
+
+/********************************* MOBLIE SIZE***********************************************/
+
+/*
+@media screen and (max-width:400px){
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(128, 128, 128, 0.7);
+    height: 50vh;
+}
+
+.header{
+    width: 100%;
+    height: 5vh;
+    background-color: gray;
+    margin-bottom: 1vh;
+}
+
+.container{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.img-container{
+    width: 85vw;
+    min-height: 60vh;
+
+    position: relative;
+}
+
+#imgtag{
+    width: 98%;
+    height: 98%;
+    object-fit:contain;
+    background-color:white;
+    border-radius:1%;
+    padding: 1%;
+    border:1px solid rgb(5, 5, 5,.5);
+}
+
+
+.img-box1{
+    min-width: 85vw;
+    height: 30vh;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom:6vh;
+}
+
+.img-box2{
+    width: 85vw;
+    
+}
+
+#textarea1{
+    width: 83.5vw;
+    height: 30vh;
+    border-radius: 5px;
+    font-size: 10px;
+    padding: 5px;
+}
+.form-section{
+    position: absolute;
+    top: 36.5vh;
+    width: 85vw;
+    height: 5vh;
+}
+
+.btn-clear{
+    width: 60px;
+    height: 20px;
+    position: absolute;
+    top: 1vh;
+}
+
+.file-select-btn{
+    width: 60px;
+    height: 20px;
+    font-size:9px;
+    font-weight: 500;
+    position: absolute;
+    top: 1vh;
+    left: 23vw;
+
+    display: flex;
+    align-items: end;
+}
+
+.btn-extract{
+    width: 60px;
+    height: 20px;
+    position: absolute;
+    top: 1vh;
+    left:46vw;
+}
+
+.btn-copy{
+    width: 60px;
+    height: 20px;
+    position: absolute;
+    left: 68vw;
+    top: 1vh;
+}
+
+.log-btn{
+    position: absolute;
+    left:8vw;
+}
+
+.log-container{
+    margin-top: 2vh;
+    width: 85vw;
+}
+
+.log-box{
+    border-radius: 5px;
+    margin-top:3vh;
+    width: 82vw;
+    border: none;
+    outline: none;
+    font-size: 10px;
+    padding: 5px;
+}
+
+}
+
+*/

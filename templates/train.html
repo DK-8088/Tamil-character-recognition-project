@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAMIL-HANDWRITTEN-RECOGNITION</title>
+    <style>
+*{ 
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    background-color:#c7c8cc;
+}
+.header{
+    width: 100%;
+    height: 8vh;
+    background-color: gray;
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.header nav ul{
+    display: flex;
+    margin-right: 250px;
+}
+.header nav ul li{
+    list-style: none;
+}
+.header nav ul li a{
+    text-decoration: none;
+    margin-left: 100px;
+    color: aliceblue;
+    text-shadow: 2px 1px 1px black;
+    padding: 3px;
+    border: 2px solid gray;
+    cursor: pointer;
+    user-select: none;
+}
+
+.header nav ul li a:hover{
+    border-bottom: 2px solid rgb(111, 189, 241);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+
+.container{
+    display: flex;
+}
+
+.container-1{
+    width: 50vw;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.container-2{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+p{
+    color: black;
+    font-size: 18px;
+}
+#p1{
+    position: absolute;
+    top:15vh;
+    left: 17vw;
+    
+}
+#p2{
+    position: absolute;
+    top: 25vh;
+    left:17vw;
+}
+#p3{
+    position: absolute;
+    top: 35vh;
+    left: 17vw;
+}
+#folderinputP{
+    position: absolute;
+}
+button{
+    position: absolute;
+    right: 130px;
+    height:30px;
+    width: 80px;
+    background-color:gray;
+    border: none;
+    border-radius: 5px;
+}
+button:hover{
+    background-color: rgb(26, 85, 211);
+    color: white ;
+    width: 85px;
+    height: 33px;
+    transition: .3s;
+}
+
+.data-table{
+    border: 1px solid black;
+    width:70%;
+    height: 85%;
+    background-color: yellow;
+    background-color: aliceblue;
+    border-radius: 8px;
+    margin-bottom: 5vh;
+    overflow: scroll;
+}
+#filelist li{
+    display: flex;
+    height: 40px;
+    width: 100%;
+    border-bottom: 2px dotted gray;
+}
+#header{
+    width: 100%;
+    height: 40px;
+    background-color:gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+</head>
+<body>
+    <header class="header">
+        <nav><ul><li><a href="/index">Home</a></li>
+            <li><a href="/train">Train model</a></li>
+        </ul></nav>
+    </header>
+    <div class="container">
+        <section class="container-1">
+            <p id="p1">step 1. select Dataset folder</p>
+            <p id="p2">step 2. Load Dataset</p>
+            <p id="p3">stpe 3. Train model</p>
+            <input type="file" id="folderinput" webkitdirectory directory multiple>
+
+            <button>Train</button>
+        </section>       
+        <section class="container-2">
+            <main class="data-table">
+                <section id="header"></section>
+                <ul id="filelist"></ul>
+            </main>
+        </section> 
+    </div>
+</body>
+    <script type="text/javascript">
+        document.querySelector('#folderinput').addEventListener('change',handlefolder)
+        let files
+        let countdownDuration = 45
+
+        function handlefolder(){
+            const filelist = document.getElementById('filelist')
+            filelist.innerHTML=''
+            files = event.target.files
+            for(let i =0;1<files.length;i++){
+                const file = files[i]
+                const listitem = document.createElement('li')
+                listitem.textContent = file.webkitRelativePath
+                filelist.appendChild(listitem)
+                document.getElementById("header").innerHTML=`<p>Estimated Time is ${countdownDuration} minutes</p>`            
+            }
+        }
+
+
+        function countdown(){
+        
+        const endtime = new Date().getTime() + countdownDuration *60 *1000;
+        const countdownFunction = setInterval(function(){
+            const now = new Date().getTime()
+            const distance = endtime - now
+            const minutes = Math.floor((distance % (1000*60*60))/(1000*60))
+            const seconds = Math.floor((distance % (1000*60)) / 1000)
+            document.getElementById("header").innerHTML=`<p>Remaining Time :${minutes}m ${seconds}s</p>`
+  
+            if (distance<0){
+                clearInterval(countdownFunction)
+                document.getElementById("header").innerHTML="<p>Training was completed</p>"
+            }
+
+        },1000)
+    }
+
+    document.querySelector('button').addEventListener("click",countdown)
+        </script>
+</html>
