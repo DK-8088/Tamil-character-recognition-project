@@ -27,7 +27,7 @@ def upload():
  
     file = request.files['fileinput']
     if file:
-        upload_folder = 'static/images'
+        upload_folder = './static/images'
         if not os.path.exists(upload_folder):
             os.makedirs(upload_folder)
 
